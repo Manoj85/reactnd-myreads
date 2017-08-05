@@ -26,8 +26,8 @@ class BookShelf extends Component {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="book-title">To Kill a Mockingbird</div>
-                                <div className="book-authors">Harper Lee</div>
+                                <div className="book-title">{book.title}</div>
+                                <div className="book-authors">{book.authors}</div>
                             </div>
                         </li>
                         )
