@@ -6,27 +6,12 @@ import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
     static propTypes = {
-        books: PropTypes.array.isRequired
-    }
-
-    state = {
-        currentlyReading: [],
-        wantToRead: [],
-        read: []
-    }
-
-    componentDidMount() {
-        // console.log(books)
-        /*
-        const currentlyReading = books.filter(book => book.shelf === 'currentlyReading')
-        const wantToRead = books.filter(book => book.shelf === 'wantToRead')
-        const read = books.filter(book => book.shelf === 'read')
-        */
-        // this.setState({ currentlyReading, wantToRead, read })
+        books: PropTypes.array.isRequired,
+        onChangeBookShelf: PropTypes.func.isRequired
     }
 
     render() {
-        const { books } = this.props
+        const { books, onChangeBookShelf } = this.props
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -34,9 +19,9 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf title="Currently Reading" books={books.filter(book => book.shelf === 'currentlyReading')}/>
-                        <BookShelf title="Want To Read" books={books.filter(book => book.shelf === 'wantToRead')}/>
-                        <BookShelf title="Read" books={books.filter(book => book.shelf === 'read')}/>
+                        <BookShelf title="Currently Reading" onChangeBookShelf={onChangeBookShelf} books={books.filter(book => book.shelf === 'currentlyReading')}/>
+                        <BookShelf title="Want To Read" onChangeBookShelf={onChangeBookShelf} books={books.filter(book => book.shelf === 'wantToRead')}/>
+                        <BookShelf title="Read" onChangeBookShelf={onChangeBookShelf} books={books.filter(book => book.shelf === 'read')}/>
                     </div>
                 </div>
                 <div className="open-search">

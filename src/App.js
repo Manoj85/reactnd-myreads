@@ -21,13 +21,19 @@ class BooksApp extends Component {
     })
   }
 
+  changeBookShelf = (event, book) => {
+      const shelf = event.target.value
+      BooksAPI.update(book, shelf)
+          .then(() => this.getAllBooks())
+  }
+
   render() {
     // console.log(this.state.books)
     return (
       <div className="app">
         { /* Main Page */ }
         <Route exact path="/" render={() => (
-            <ListBooks books={this.state.books}/>
+            <ListBooks books={this.state.books} onChangeBookShelf={this.changeBookShelf}/>
         )}/>
 
         { /* Search Page */ }
