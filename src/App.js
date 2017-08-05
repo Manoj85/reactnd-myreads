@@ -22,12 +22,12 @@ class BooksApp extends Component {
   }
 
   render() {
-    console.log(this.state.books)
+    // console.log(this.state.books)
     return (
       <div className="app">
         { /* Main Page */ }
         <Route exact path="/" render={() => (
-            <ListBooks/>
+            <ListBooks books={this.state.books}/>
         )}/>
 
         { /* Search Page */ }

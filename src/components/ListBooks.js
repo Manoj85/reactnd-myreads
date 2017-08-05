@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
 import BookShelf from './BookShelf'
+import PropTypes from 'prop-types'
 
 class ListBooks extends Component {
+    static propTypes = {
+        books: PropTypes.array.isRequired
+    }
+
     render() {
+        const { books } = this.props
+        console.log(books)
+
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -121,9 +129,7 @@ class ListBooks extends Component {
                     <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
                 </div>
             </div>
-
         )
-
     }
 
 }
