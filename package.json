@@ -9,7 +9,8 @@
   "devDependencies": {
     "react-scripts": "0.9.5",
     "escape-string-regexp": "^1.0.5",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "react-headroom": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
