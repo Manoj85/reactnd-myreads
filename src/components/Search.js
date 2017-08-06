@@ -4,6 +4,8 @@ import sortBy from 'sort-by'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import Book from './Book'
+
 // Import APIs
 import * as BooksAPI from '../BooksAPI'
 
@@ -75,26 +77,8 @@ class Search extends Component {
                     <ol className="books-grid">
                         { bookSearchResult.map((book) => {
                             return (
-                                <li key={book.id}>
-                                    <div className="book">
-                                        <div className="book-top">
-                                            <div className="book-cover" style={ book && book.imageLinks && book.imageLinks.thumbnail && { backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
-                                            <div className="book-shelf-changer">
-                                                <select defaultValue={book.shelf} onChange={(event) => handleBookChange(event, book)}>
-                                                    <option value="none" disabled>Move to...</option>
-                                                    <option value="currentlyReading">Currently Reading</option>
-                                                    <option value="wantToRead">Want to Read</option>
-                                                    <option value="read">Read</option>
-                                                    <option value="none">None</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="book-title">{book.title}</div>
-                                        <div className="book-authors">{book.authors}</div>
-                                    </div>
-                                </li>
+                                <Book key={book.id} book={book} handleBookChange={handleBookChange} />
                             )
-
                         })
                         }
                     </ol>
