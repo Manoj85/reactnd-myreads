@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import Headroom from 'react-headroom'
 
 class Header extends Component {
     static propTypes = {
@@ -9,9 +10,11 @@ class Header extends Component {
     render() {
         const { appTitle } = this.props
         return (
-            <div className="app-title">
-                <h1>{appTitle}</h1>
-            </div>
+            <Headroom>
+                <div className="app-title">
+                    <h1>{appTitle}</h1>
+                </div>
+            </Headroom>
         )
     }
 }
