@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 // Import APIs
 import * as BooksAPI from '../BooksAPI'
 
-
 class Search extends Component {
 
     static propTypes = {
@@ -59,6 +58,7 @@ class Search extends Component {
                     <div className="search-books-input-wrapper">
                         <input
                             type="text"
+                            autoFocus
                             placeholder="Search by title or author"
                             value={query}
                             onChange={(event) => this.handleBookSearch(event.target.value)}
