@@ -12,6 +12,7 @@ import * as BooksAPI from '../BooksAPI'
 class Search extends Component {
 
     static propTypes = {
+        booksShelved: PropTypes.array,
         handleBookChange: PropTypes.func.isRequired
     }
 
@@ -21,7 +22,7 @@ class Search extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query })
+        this.setState({ query: query.trim() })
     }
 
     clearQuery = () => {
@@ -29,14 +30,20 @@ class Search extends Component {
     }
 
     handleBookSearch = (query) => {
-        if(query !== '') {
-            this.updateQuery(query)
-            BooksAPI.search(query, 20)
-                    .then(books => !books.error ? this.setState({ books }): console.log(books.error))
-        } else {
+        if(!query) {
             this.clearQuery(query)
-        }
+        } else {
+            this.updateQuery(query)
 
+            BooksAPI.search(query, 20).then(books => {
+                if(!books.error) {
+                    books.map(book => (this.props.booksShelved.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
+                    this.setState({ books })
+                } else {
+                    console.log(books.error)
+                }
+            })
+        }
     }
 
     render() {

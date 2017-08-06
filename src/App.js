@@ -23,8 +23,19 @@ class BooksApp extends Component {
 
   handleBookChange  = (event, book) => {
       const shelf = event.target.value
+      /*
       BooksAPI.update(book, shelf)
           .then(() => this.getAllBooks())
+      */
+      if (this.state.books) {
+        BooksAPI.update(book,shelf).then(() => {
+          book.shelf = shelf;
+          this.setState(state => ({
+            books: state.books.filter(b => b.id !== book.id).concat([ book ])
+          }))
+        })
+      }
+
   }
 
   render() {
@@ -38,7 +49,7 @@ class BooksApp extends Component {
 
         { /* Search Page */ }
         <Route path="/search" render={( {history} ) => (
-            <Search handleBookChange={this.handleBookChange} />
+            <Search booksShelved={this.state.books} handleBookChange={this.handleBookChange} />
         )}/>
       </div>
     )

@@ -11,7 +11,7 @@ class Book extends Component {
         const {book, handleBookChange} = this.props
 
         return (
-            <li>
+            <li key={book.id}>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={ book && book.imageLinks && book.imageLinks.thumbnail && { backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
