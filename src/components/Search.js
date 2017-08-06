@@ -59,7 +59,6 @@ class Search extends Component {
         }
         bookSearchResult.sort(sortBy('title'))
 
-
         return (
             <div className="search-books">
                 <div className="search-books-bar">

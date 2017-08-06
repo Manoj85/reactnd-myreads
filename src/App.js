@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 
+
 import ListBooks from './components/ListBooks'
 import Search from './components/Search'
 import './App.css'
@@ -23,10 +24,7 @@ class BooksApp extends Component {
 
   handleBookChange  = (event, book) => {
       const shelf = event.target.value
-      /*
-      BooksAPI.update(book, shelf)
-          .then(() => this.getAllBooks())
-      */
+
       if (this.state.books) {
         BooksAPI.update(book,shelf).then(() => {
           book.shelf = shelf;
@@ -35,11 +33,9 @@ class BooksApp extends Component {
           }))
         })
       }
-
   }
 
   render() {
-    // console.log(this.state.books)
     return (
       <div className="app">
         { /* Main Page */ }
