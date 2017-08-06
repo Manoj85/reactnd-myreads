@@ -21,7 +21,6 @@ class Search extends Component {
 
     updateQuery = (query) => {
         this.setState({ query })
-        this.handleBookSearch(query)
     }
 
     clearQuery = () => {
