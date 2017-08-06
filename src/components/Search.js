@@ -69,8 +69,7 @@ class Search extends Component {
 
                     {bookSearchResult.length !== 0 && (
                         <div className="showing-books">
-                            <span>Now showing {bookSearchResult.length} of {books.length}</span>
-                            <button onClick={this.clearQuery}>Show all</button>
+                            <span> {bookSearchResult.length} results found for the query <b>{query}</b></span>
                         </div>
                     )}
                     <ol className="books-grid">
