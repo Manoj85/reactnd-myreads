@@ -21,7 +21,7 @@ class BooksApp extends Component {
     })
   }
 
-  changeBookShelf = (event, book) => {
+  handleBookChange  = (event, book) => {
       const shelf = event.target.value
       BooksAPI.update(book, shelf)
           .then(() => this.getAllBooks())
@@ -33,12 +33,12 @@ class BooksApp extends Component {
       <div className="app">
         { /* Main Page */ }
         <Route exact path="/" render={() => (
-            <ListBooks books={this.state.books} onChangeBookShelf={this.changeBookShelf}/>
+            <ListBooks books={this.state.books} handleBookChange={this.handleBookChange}/>
         )}/>
 
         { /* Search Page */ }
         <Route path="/search" render={( {history} ) => (
-            <Search/>
+            <Search handleBookChange={this.handleBookChange} />
         )}/>
       </div>
     )

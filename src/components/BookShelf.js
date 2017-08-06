@@ -5,11 +5,11 @@ class BookShelf extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
         title: PropTypes.string.isRequired,
-        onChangeBookShelf: PropTypes.func.isRequired
+        handleBookChange: PropTypes.func.isRequired
     }
 
     render() {
-        const { books, title, onChangeBookShelf } = this.props
+        const { books, title, handleBookChange } = this.props
         // console.log(title + " - " + books)
         return (
             <div className="bookshelf">
@@ -21,9 +21,9 @@ class BookShelf extends Component {
                         <li key={book.id}>
                             <div className="book">
                                 <div className="book-top">
-                                    <div className="book-cover" style={ book && book.imageLinks && { backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                    <div className="book-cover" style={ book && book.imageLinks && book.imageLinks.thumbnail && { backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                                     <div className="book-shelf-changer">
-                                        <select defaultValue={book.shelf} onChange={(event) => onChangeBookShelf(event, book)}>
+                                        <select defaultValue={book.shelf} onChange={(event) => handleBookChange(event, book)}>
                                             <option value="none" disabled>Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
